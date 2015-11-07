@@ -1,0 +1,34 @@
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include "algorithm/ZMST.h"
+#include "algorithm/SMST.h"
+#include "algorithm/LMST.h"
+#include "algorithm/PointsGenerator.h"
+
+
+class MST
+{
+	void SMST(string inputFileName)
+	{
+		PointsGenerator pg;
+		SMST smst;
+		smst.setPointsFromFile(inputFileName);
+		smst.calculateMST();
+		smst.printMSTToFile("output.out");
+	}
+	void ZMST(string inputFileName)
+	{
+		ZMST zmst;
+		zmst.setPointsFromFile(inputFileName);
+		zmst.exec();
+		zmst.print("output.out");
+	}
+	void LMST(string inputFileName)
+	{
+		PointsGenerator pg;
+		LMST lmst(inputFileName.c_str());
+		lmst.Output("output.out");
+		return 0;
+	}
+};
